@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+import com.iocean.model.Adherent;
+
 public class Utilitaires {
 
 	public static boolean verifierMail(String email) {
@@ -22,6 +24,16 @@ public class Utilitaires {
 		return (password.length() >= 6); 
 		
 		// à compléter
-
 	}
+	
+	public static void sortMediasDate(Adherent ad){
+		MediasComparatorDate comparator = new MediasComparatorDate();
+		ad.getMedias().sort(comparator);
+	}
+	
+	public static void sortMediasTitle(Adherent ad){
+		MediasComparatorTitre comparator = new MediasComparatorTitre();
+		ad.getMedias().sort(comparator);
+	}
+	
 }

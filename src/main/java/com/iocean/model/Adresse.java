@@ -4,10 +4,10 @@ public class Adresse {
 
 	private int numero;
 	private String adresse;
-	private String codePostal;
+	private int codePostal;
 	private String ville;
 	
-	public Adresse(int numero, String adresse, String codePostal, String ville){
+	public Adresse(int numero, String adresse, int codePostal, String ville){
 		this.numero = numero;
 		this.adresse = adresse;
 		this.codePostal = codePostal;
@@ -34,11 +34,11 @@ public class Adresse {
 		this.adresse = adresse;
 	}
 
-	public String getCodePostal() {
+	public int getCodePostal() {
 		return codePostal;
 	}
 
-	public void setCodePostal(String codePostal) {
+	public void setCodePostal(int codePostal) {
 		this.codePostal = codePostal;
 	}
 
