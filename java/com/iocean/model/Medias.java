@@ -75,6 +75,14 @@ public class Medias {
 		}else{
 			throw new Exception("Ouvrage déjà emprunté.");
 		}
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Medias [titre=" + titre + ", auteur=" + auteur + ", emprunteur=" + emprunteur + ", dateEmprunt="
+				+ dateEmprunt + ", typeMedia=" + typeMedia + "]";
+	}
+	
+	
 	
 }
