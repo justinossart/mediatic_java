@@ -59,11 +59,12 @@ public class Utilisateur extends Personne {
 	// methode 
 	
 	public static void login(String login,String mdp) throws LoginException {
-		// attente de la classe mediatheque
+		//TODO : Appeller la BDD.
+	
 		
 		if(login==null||mdp==null||Utilitaires.verifierPassword(mdp)==false)
 		{
-			
+			throw new LoginException(); 
 		}
 	}	
 	
