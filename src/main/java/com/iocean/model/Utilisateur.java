@@ -1,5 +1,6 @@
 package com.iocean.model;
 
+import com.iocean.exception.LoginException;
 import com.iocean.utiltaires.Utilitaires;
 
 public class Utilisateur extends Personne {
@@ -55,7 +56,16 @@ public class Utilisateur extends Personne {
 				+ "]";
 	}
 	
+	// methode 
 	
+	public static void login(String login,String mdp) throws LoginException {
+		// attente de la classe mediatheque
+		
+		if(login==null||mdp==null||Utilitaires.verifierPassword(mdp)==false)
+		{
+			
+		}
+	}	
 	
 	
 	
