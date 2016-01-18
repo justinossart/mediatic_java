@@ -22,6 +22,7 @@ public class Utilitaires {
 		return (password.length() >= 6); 
 		
 		// à compléter
+		
 
 	}
 }
