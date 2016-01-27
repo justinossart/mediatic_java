@@ -79,4 +79,26 @@ public class EmpruntDAO {
 		em.remove(ept);
 		em.close();
 	}
+	
+	/**
+	 * recuper la liste des emprunts par adherent
+	 * @param Long int
+	 * @return emprunts
+	 */
+	public List<Emprunt> getEmpruntsByAdherent(Long adherent_id){
+		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
+		EntityManager em = emf.createEntityManager();
+		
+		TypedQuery<Emprunt> query = em.createQuery(
+				"select e from emprunt e where adherent_id = :filter", Emprunt.class);
+		query.setParameter("filter", adherent_id);
+		List<Emprunt> emprunts = query.getResultList();
+		
+		return emprunts;
+	}
+	
+	/*
+	 * - Selectionner tous les emprunts d'un adhérents. 
+	 * - Selectionner tous les emprunts d'un media 
+	 */
 }

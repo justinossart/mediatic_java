@@ -2,6 +2,7 @@ package com.iocean.test;
 
 import java.time.LocalDate;
 import com.iocean.dao.AdherentDAO;
+import com.iocean.dao.EmpruntDAO;
 import com.iocean.dao.MediaDAO;
 import com.iocean.dao.UtilisateurDAO;
 import com.iocean.model.Adherent;
@@ -80,7 +81,7 @@ public class TestDao {
 		UtilisateurDAO utildao = new UtilisateurDAO();
 		AdherentDAO adhdao = new AdherentDAO();
 		MediaDAO mediaDao = new MediaDAO();
-		
+		EmpruntDAO empruntDao = new EmpruntDAO();
 		
 		
 //-------------------------------------------------------------------------------------------------------------------------------------		
@@ -105,18 +106,20 @@ public class TestDao {
 		
 		
 		// enregistrement des medias
-		mediaDao.createMedia(media);
-		mediaDao.createMedia(media2);
-		mediaDao.createMedia(media3);
-		mediaDao.createMedia(media4);
-		mediaDao.createMedia(media5);
-		mediaDao.createMedia(media6);
-		mediaDao.createMedia(media7);
-		mediaDao.createMedia(media8);
-		mediaDao.createMedia(media9);
-		mediaDao.createMedia(media10);
-		mediaDao.createMedia(media11);
+		mediaDao.saveMedia(media);
+		mediaDao.saveMedia(media2);
+		mediaDao.saveMedia(media3);
+		mediaDao.saveMedia(media4);
+		mediaDao.saveMedia(media5);
+		mediaDao.saveMedia(media6);
+		mediaDao.saveMedia(media7);
+		mediaDao.saveMedia(media8);
+		mediaDao.saveMedia(media9);
+		mediaDao.saveMedia(media10);
+		mediaDao.saveMedia(media11);
 		
+		// enregistrement des emprunts
+		//empruntDao.
 		
 		
 		/* L'adhérent d'id 2  & 4 */
