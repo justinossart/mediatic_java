@@ -2,19 +2,19 @@ package com.iocean.test;
 
 import java.time.LocalDate;
 
-import com.iocean.dao.AdherentDAO;
-import com.iocean.dao.CotisationDAO;
-import com.iocean.dao.UtilisateurDAO;
-import com.iocean.model.Adherent;
-import com.iocean.model.Cotisation;
-import com.iocean.model.Utilisateur;
-import com.iocean.typeEnum.TypeCotisation;
+import com.iocean.dao.*;
+import com.iocean.model.*;
+import com.iocean.typeEnum.*;
+
+
 
 public class TestDao {
 
 	public static void main(String[] args) {
 
-		/* Création d'adhérent */
+		/****************************************************************
+		 *  				creation des adherents
+		 ****************************************************************/
 		
 		Adherent adh1 = new Adherent();
 		Adherent adh2 = new Adherent();
@@ -42,31 +42,83 @@ public class TestDao {
 		adh6.setPrenom("Laurent");
 		adh6.setEmail("lolo@bibidibabidi.bou");
 		
-		/* Création Utilisateur */
 		
+
+		/****************************************************************
+		 *  				creation des utilsateurs
+		 ****************************************************************/
 		Utilisateur util1 = new Utilisateur("Potter", "Harry", "harry@poudlard.mm", "leviosa", "ingardium", 2);
 		Utilisateur util2 = new Utilisateur("Goldman", "Jean jacques", "janno@poudlard.mm", "jjg", "music", 2);
 		Utilisateur util3 = new Utilisateur("Neige", "Blanche", "blanche@poudlard.mm", "BlancheNeige", "7nains", 2);
 		Utilisateur util4 = new Utilisateur("Castor", "Père", "PCastor@poudlard.mm", "PereCastor", "histoire", 2);
 		
-		/* Création des DAO */
+		
+		
+	
+		/****************************************************************
+		 *  				creation des medias
+		 ****************************************************************/
+		Media media = new Media("Le seigneur des anneaux", "toolkien", LocalDate.of(2010, 10, 14), TypeMedia.DVD);
+		Media media2 = new Media("star wars", "georges lucas", LocalDate.of(2011, 04, 20), TypeMedia.DVD);
+		Media media3 = new Media("duc", "booba", LocalDate.of(2000, 04, 20), TypeMedia.CD);
+		Media media4 = new Media("harry potter", "jk rowling", LocalDate.of(1999, 01, 30), TypeMedia.LIVRE);
+		Media media5 = new Media("terminator", "cameron", LocalDate.of(1984, 07, 07), TypeMedia.DVD);
+		Media media6 = new Media("harry potter", "jk rowling", LocalDate.of(1999, 01, 30), TypeMedia.LIVRE);
+		Media media7 = new Media("What''s New in Java 8", "Adam L. Davis", null, TypeMedia.LIVRE);
+		Media media8 = new Media("Welcome to Java for Python Programmers", "Brad Miller", null, TypeMedia.LIVRE);
+		Media media9 = new Media("lllllllll", "celine dion", LocalDate.of(2010, 10, 14), TypeMedia.CD);
+		Media media10 = new Media("AVATAR", "cameron", LocalDate.of(2009, 05, 02), TypeMedia.CD);
+		Media media11 = new Media("eminem show", "eminem", LocalDate.of(2004, 10, 14), TypeMedia.CD);
+		
+		
+		
+		/****************************************************************
+		 * 				Création des DAOs 
+		 ****************************************************************/
 		
 		UtilisateurDAO utildao = new UtilisateurDAO();
 		AdherentDAO adhdao = new AdherentDAO();
+		MediaDAO mediaDao = new MediaDAO();
+		EmpruntDAO empruntDao = new EmpruntDAO();
 		
-		/* Ajout à la Base */
 		
+//-------------------------------------------------------------------------------------------------------------------------------------		
+//														AJOUT A LA BASE
+//-------------------------------------------------------------------------------------------------------------------------------------		
+
+
+		
+		// enregistrement des utilsateurs 
 		utildao.saveUtilisateur(util1);
 		utildao.saveUtilisateur(util2);
 		utildao.saveUtilisateur(util3);
 		utildao.saveUtilisateur(util4);
 		
+		// enregistrement des adherents
 		adhdao.saveAdherent(adh1);
 		adhdao.saveAdherent(adh2);
 		adhdao.saveAdherent(adh3);
 		adhdao.saveAdherent(adh4);
 		adhdao.saveAdherent(adh5);
 		adhdao.saveAdherent(adh6);
+		
+		
+		// enregistrement des medias
+		mediaDao.saveMedia(media);
+		mediaDao.saveMedia(media2);
+		mediaDao.saveMedia(media3);
+		mediaDao.saveMedia(media4);
+		mediaDao.saveMedia(media5);
+		mediaDao.saveMedia(media6);
+		mediaDao.saveMedia(media7);
+		mediaDao.saveMedia(media8);
+		mediaDao.saveMedia(media9);
+		mediaDao.saveMedia(media10);
+		mediaDao.saveMedia(media11);
+		
+		// enregistrement des emprunts
+		//empruntDao.
+		
 		
 		/* L'adhérent d'id 2  & 4 */
 		
