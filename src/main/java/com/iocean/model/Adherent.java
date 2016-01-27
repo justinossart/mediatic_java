@@ -3,17 +3,36 @@ package com.iocean.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="adherent")
 public class Adherent extends Personne {
 
+	@Column(name = "date_naissance")
 	private LocalDate dateNaissance;
+	
+	@Embedded
 	private Adresse adresse;
+	
+	@ManyToOne
 	private Cotisation cotisation;
-	private ArrayList<Medias> listeMedias;
+	
+	@ManyToMany
+	private ArrayList<Media> listeMedias;
 
 	// Constructeurs
 
+	public Adherent() {
+	}
+	
 	public Adherent(String nom, String prenom, String mail, LocalDate date, Adresse adresse, Cotisation cotisation,
-			ArrayList<Medias> listMedias) {
+			ArrayList<Media> listMedias) {
 		super(nom, prenom, mail);
 		this.dateNaissance = date;
 		this.adresse = adresse;
@@ -22,15 +41,11 @@ public class Adherent extends Personne {
 	}
 
 	public Adherent(String nom, String prenom, String mail, LocalDate date, Adresse adresse, Cotisation cotisation) {
-		this(nom, prenom, mail, date, adresse, cotisation, new ArrayList<Medias>());
-	}
-
-	public Adherent() {
-		this("Nom", "Prenom", "Email", null, null, null, null);
+		this(nom, prenom, mail, date, adresse, cotisation, new ArrayList<Media>());
 	}
 
 	// Getteurs
-	public ArrayList<Medias> getMedias() {
+	public ArrayList<Media> getMedias() {
 		return this.listeMedias;
 	}
 
@@ -58,11 +73,11 @@ public class Adherent extends Personne {
 
 	// Methode
 
-	public void addMedia(Medias media) {
+	public void addMedia(Media media) {
 		this.listeMedias.add(media);
 	}
 
-	public void removeMedia(Medias media) {
+	public void removeMedia(Media media) {
 		this.listeMedias.remove(media);
 	}
 

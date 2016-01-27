@@ -1,12 +1,23 @@
 package com.iocean.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.iocean.exception.LoginException;
 import com.iocean.utilitaires.Utilitaires;
 
+@Entity
+@Table(name="utilisateur")
 public class Utilisateur extends Personne {
 	
+	@Column(name = "login")
 	private String login;
+	
+	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "niveau_acces")
 	private int authentification;
 	
 	public Utilisateur(String nom, String prenom, String email , String login, String password, int auth){
@@ -23,7 +34,6 @@ public class Utilisateur extends Personne {
 	}
 	
 	public Utilisateur() {
-		this("John","Doe","alexis.lucien@polygone.fr", "Inconnu", "123456", 0);
 	}
 
 	public String getLogin() {

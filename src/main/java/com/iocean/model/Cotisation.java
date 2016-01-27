@@ -1,20 +1,43 @@
 package com.iocean.model;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import com.iocean.typeEnum.TypeCotisation;
 
+@Entity
+@Table(name="cotisation")
 public class Cotisation {
 	
 	// Attributs 
 	
+	@Id
+	@GeneratedValue
+	private long id;
+	
+	@Column
 	private float montant;
+	@Column
 	private LocalDate dateCotisation;
+	
+	@Enumerated(value = EnumType.STRING)
 	private TypeCotisation typeCotisation;
+	
+	@OneToMany (mappedBy="cotisation")
+	private List<Adherent> adherents;
 	
 	// Constructeurs
 	
 	public Cotisation(){
-		this(0.0f, null,TypeCotisation.AUTRE);
 	}
 	
 	public Cotisation(float montant, LocalDate date,TypeCotisation typeCotisation){ /* todo : eventuel try catch pour vérif l'existance du type cotisation */
