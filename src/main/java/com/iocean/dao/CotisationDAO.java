@@ -6,85 +6,88 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
+import com.iocean.model.Adherent;
+import com.iocean.model.Cotisation;
 import com.iocean.model.Utilisateur;
 import com.iocean.utilitaires.PersistenceManagerFactorySingleton;
 
-public class UtilisateurDAO {
-	
+public class CotisationDAO {
+
 	/**
-	 * methode de creation d'un utilisateur
-	 * @param utilisateur
+	 * methode de creation d'une cotisation
+	 * @param cotisation
 	 * @return
 	 */
-	public Utilisateur saveUtilisateur(Utilisateur utilisateur){
+	public Cotisation saveCotisation(Cotisation cotisation){
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		em.persist(utilisateur);
+		em.persist(cotisation);
 		em.getTransaction().commit();
 		em.close();
-		return utilisateur;
+		return cotisation;
 	}
 	
 	/**
-	 * update utilisateur
-	 * @param utilisateur
+	 * Modification d'une cotisation
+	 * @param cotisation
 	 * @return
 	 */
-	public Utilisateur updateUtilisateur(Utilisateur utilisateur){
+	public Cotisation updateCotisation(Cotisation cotisation){
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		em.merge(utilisateur);
+		em.merge(cotisation);
 		em.getTransaction().commit();
 		em.close();
-		return utilisateur;
+		return cotisation;
 	}
 	
 	
 	/**
-	 * recupere un utilsateur par son id
+	 * recupere une cotisation par son id
 	 * @param id
 	 * @return
 	 */
-	public Utilisateur getUtilisateur(Long id){
+	public Cotisation getCotisation(Long id){
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
-		Utilisateur utilisateur = em.find(Utilisateur.class, id);
+		Cotisation cotisation = em.find(Cotisation.class, id);
 		em.close();
-		return utilisateur;
+		return cotisation;
 	}
 	
 	
 	/**
-	 * recupere tous les utilsateurs
+	 * recupere tous les cotisations d'un adherent
 	 * @return
 	 */
-	public List<Utilisateur> getAllUtilisateur(){
+	public List<Cotisation> getAllCotisation(Adherent adh){
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
-		TypedQuery<Utilisateur> queryGetAll = em.createQuery(
-				"select u from utilisateur u", Utilisateur.class);
-		List<Utilisateur> allUtilisateurs = queryGetAll.getResultList();
+		Long adhid = adh.getId();
+		TypedQuery<Cotisation> queryGetAll = em.createQuery(
+				"select c from cotisation c"
+				+ "join adherent.cotisation "
+				+ "where adherent.id = :adhid", Cotisation.class);
+		queryGetAll.setParameter("adhid", adhid);
+		List<Cotisation> allCotis = queryGetAll.getResultList();
 		em.close();
-		return allUtilisateurs;
+		return allCotis;
 	}
 	
 	
 	
 	/**
-	 * supprimer un utilsateur
+	 * supprimer une cotisation
 	 */
-	public void removeUtilisateur(Long id){
+	public void removeCotisation(Long id){
 		
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
-		Utilisateur usr = em.find(Utilisateur.class, id);
-		em.remove(usr);
+		Cotisation cot = em.find(Cotisation.class, id);
+		em.remove(cot);
 		em.close();
 	}
 	
-	
-	
-
 }

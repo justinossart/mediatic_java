@@ -1,15 +1,11 @@
 package com.iocean.test;
 
 import java.time.LocalDate;
-import com.iocean.dao.AdherentDAO;
-import com.iocean.dao.EmpruntDAO;
-import com.iocean.dao.MediaDAO;
-import com.iocean.dao.UtilisateurDAO;
-import com.iocean.model.Adherent;
-import com.iocean.model.Emprunt;
-import com.iocean.model.Media;
-import com.iocean.model.Utilisateur;
-import com.iocean.typeEnum.TypeMedia;
+
+
+import com.iocean.dao.*;
+import com.iocean.model.*;
+import com.iocean.typeEnum.*;
 
 public class TestDao {
 
@@ -139,8 +135,32 @@ public class TestDao {
 		System.out.println(getadh2);
 		System.out.println(getadh4);
 		
+		/* Cotisation à jour */
 		
-		// enregistrement des emprunts
+		Cotisation cot1 = new Cotisation(125f, LocalDate.of(2016, 03, 18), TypeCotisation.FAMILLE);
+		Cotisation cot2 = new Cotisation(125f, LocalDate.of(2015, 12, 25), TypeCotisation.FAMILLE);
+		
+		CotisationDAO cotdao = new CotisationDAO();
+		
+		cotdao.saveCotisation(cot1);
+		cotdao.saveCotisation(cot2);
+		
+		adh2.setCotisation(cot1);
+		adh5.setCotisation(cot1);
+		
+		if(Cotisation.isUpToDateCotisation(adh2)){
+			System.out.println(adh2.getNom() + " est à jour.");
+		}
+		else{
+			System.out.println(adh2.getNom() + " n'est pas à jour.");
+		}
+		
+		if(Cotisation.isUpToDateCotisation(adh5)){
+			System.out.println(adh5.getNom() + " est à jour.");
+		}
+		else{
+			System.out.println(adh5.getNom() + " n'est pas à jour.");
+		}
 		
 		Emprunt getEmp1 = empruntDao.getEmprunt(292L);
 		Emprunt getEmp2 = empruntDao.getEmprunt(293L);
