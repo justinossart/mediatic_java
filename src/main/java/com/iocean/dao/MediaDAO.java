@@ -1,11 +1,9 @@
 package com.iocean.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-
 import com.iocean.model.Media;
 import com.iocean.utilitaires.PersistenceManagerFactorySingleton;
 
@@ -84,26 +82,5 @@ public class MediaDAO {
 		em.close();
 	}
 	
-	
-	
-	
-	/**
-	 * recuper la liste des medias par filtre
-	 */
-	public List<Media> getAdherentByName(String filter){
-		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
-		EntityManager em = emf.createEntityManager();
-		TypedQuery<Media> query = em.createQuery(
-				"select m from media m where name like %:filter%", Media.class);
-		query.setParameter("filter", filter);
-		List<Media> mediaList = query.getResultList();
 		
-		return mediaList;
-	}
-	
-	
-	
-
-	
-	
 }
