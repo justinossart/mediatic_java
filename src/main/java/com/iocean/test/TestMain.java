@@ -72,9 +72,7 @@ public class TestMain {
 		listeAdherents.add(adherent2);
 		
 		
-		
-		
-		
+				
 		
 		/************************************************
 		*			creation des medias

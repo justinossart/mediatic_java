@@ -1,12 +1,26 @@
 package com.iocean.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import com.iocean.utiltaires.Utilitaires;
 
-public class Personne {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Personne {
 
+	@Id
+	@GeneratedValue
 	private int id;
+	
+	@Column(name="nom")
 	private String nom;
+	
+	@Column(name="prenom")
 	private String prenom;
+	
+	@Column(name="email")
 	private String email;
 
 	public Personne() {
