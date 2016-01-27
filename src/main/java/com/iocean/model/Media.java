@@ -2,25 +2,43 @@ package com.iocean.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import com.iocean.typeEnum.TypeMedia;
 
-public class Medias {
+@Entity
+@Table(name="media")
+public class Media {
 
 	// Attributs 
 	
+	@Column
 	private String titre;
+	@Column
 	private String auteur;
+	
+	@Column(name="id_emprunteur")
+	@OneToMany(mappedBy="listeMedias")
 	private Adherent emprunteur;
+	
+	@Column
 	private LocalDate dateEmprunt;
+	
+	@Column
+	@Enumerated(value = EnumType.STRING)
 	private TypeMedia typeMedia;
 	
 	// Constructeur
 
-	public Medias(){
-		this("Inconnu","Inconnu",null,TypeMedia.AUTRE);
+	public Media(){
 	}
 	
-	public Medias(String titre, String auteur, LocalDate dateEmprunt, TypeMedia typeMedia) {
+	public Media(String titre, String auteur, LocalDate dateEmprunt, TypeMedia typeMedia) {
 		this.titre = titre;
 		this.auteur = auteur;
 		this.dateEmprunt = dateEmprunt;

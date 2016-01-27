@@ -24,7 +24,6 @@ public abstract class Personne {
 	private String email;
 
 	public Personne() {
-		this("John","Doe","alexis.lucien@polygone.fr");
 	}
 	
 	public Personne(String nom, String prenom, String email) {

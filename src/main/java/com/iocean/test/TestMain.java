@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import com.iocean.model.Adherent;
 import com.iocean.model.Adresse;
 import com.iocean.model.Cotisation;
-import com.iocean.model.Medias;
-import com.iocean.model.Mediatheque;
+import com.iocean.model.Media;
 import com.iocean.model.Utilisateur;
 import com.iocean.typeEnum.TypeCotisation;
 import com.iocean.typeEnum.TypeMedia;
@@ -17,13 +16,13 @@ public class TestMain {
 	public static void main(String[] args) {
 
 		ArrayList<Utilisateur> listeUtilisateurs = new ArrayList<Utilisateur>();
-		ArrayList<Medias> listMedias = new ArrayList<Medias>();
+		ArrayList<Media> listMedias = new ArrayList<Media>();
 		ArrayList<Adherent> listeAdherents = new ArrayList<Adherent>();
 
 		/************************************************
 		*			creation de la Mediatheque
 		************************************************/
-		Mediatheque mediatheque = new Mediatheque(listeUtilisateurs, listeAdherents, listMedias);
+		//Mediatheque mediatheque = new Mediatheque(listeUtilisateurs, listeAdherents, listMedias);
 		
 		
 		/************************************************
@@ -78,9 +77,9 @@ public class TestMain {
 		*			creation des medias
 		************************************************/
 		
-		Medias media1 = new Medias("Terminatir", "James Cameron", LocalDate.of(2016, 01, 02), TypeMedia.DVD);
-		Medias media2 = new Medias("Lazarus", "David Bowie", LocalDate.of(2016, 01, 02), TypeMedia.CD);
-		Medias media3 = new Medias("Le seigneur des anneaux", "Tolkien", LocalDate.of(2016, 01, 02), TypeMedia.LIVRE);
+		Media media1 = new Media("Terminatir", "James Cameron", LocalDate.of(2016, 01, 02), TypeMedia.DVD);
+		Media media2 = new Media("Lazarus", "David Bowie", LocalDate.of(2016, 01, 02), TypeMedia.CD);
+		Media media3 = new Media("Le seigneur des anneaux", "Tolkien", LocalDate.of(2016, 01, 02), TypeMedia.LIVRE);
 		
 		// ajout dans la liste medias
 		listMedias.add(media1);
@@ -101,7 +100,7 @@ public class TestMain {
 		/*************************************************
 		 * 			Affichage de la mediathque
 		 ************************************************/
-		System.out.println(mediatheque);
+		//System.out.println(mediatheque);
 		
 		
 		/*************************************************
@@ -124,17 +123,17 @@ public class TestMain {
 		media3.setDateEmprunt(dateMedia1);
 		
 		
-		Medias media4 = new Medias("La reine des neige", "Disney", LocalDate.of(2015, 12, 04), TypeMedia.DVD);
-		Medias media5 = new Medias("Chanson pour les pieds", "Jena jacques goldman", LocalDate.of(2003, 06, 11), TypeMedia.CD);
-		Medias media6 = new Medias("Le petit chaperon rouge", "Mystere et boule de gomme", LocalDate.of(1962, 04, 20), TypeMedia.LIVRE);
-		Medias media7 = new Medias("Les 4 mousquetaires", "Dartagnan", LocalDate.of(1965, 10, 02), TypeMedia.DVD);
-		Medias media8 = new Medias("Always", "John bon jovi", LocalDate.of(1995, 01, 02), TypeMedia.CD);
-		Medias media9 = new Medias("Harry Potter tome 1", "Merlin", LocalDate.of(2001, 01, 02), TypeMedia.LIVRE);
-		Medias media10 = new Medias("Breaking Bad", "James Cameron", LocalDate.of(2009, 01, 02), TypeMedia.DVD);
-		Medias media11 = new Medias("Daidis Life", "Marcel Dadi", LocalDate.of(1961, 01, 02), TypeMedia.CD);
-		Medias media12 = new Medias("Harry Potter tome 2", "Merlin", LocalDate.of(2003, 01, 02), TypeMedia.LIVRE);
-		Medias media13 = new Medias("Zootopia", "Pixar", LocalDate.of(2013, 01, 02), TypeMedia.DVD);
-		Medias media14 = new Medias("Best of", "Metallica", LocalDate.of(2000, 01, 02), TypeMedia.CD);
+		Media media4 = new Media("La reine des neige", "Disney", LocalDate.of(2015, 12, 04), TypeMedia.DVD);
+		Media media5 = new Media("Chanson pour les pieds", "Jena jacques goldman", LocalDate.of(2003, 06, 11), TypeMedia.CD);
+		Media media6 = new Media("Le petit chaperon rouge", "Mystere et boule de gomme", LocalDate.of(1962, 04, 20), TypeMedia.LIVRE);
+		Media media7 = new Media("Les 4 mousquetaires", "Dartagnan", LocalDate.of(1965, 10, 02), TypeMedia.DVD);
+		Media media8 = new Media("Always", "John bon jovi", LocalDate.of(1995, 01, 02), TypeMedia.CD);
+		Media media9 = new Media("Harry Potter tome 1", "Merlin", LocalDate.of(2001, 01, 02), TypeMedia.LIVRE);
+		Media media10 = new Media("Breaking Bad", "James Cameron", LocalDate.of(2009, 01, 02), TypeMedia.DVD);
+		Media media11 = new Media("Daidis Life", "Marcel Dadi", LocalDate.of(1961, 01, 02), TypeMedia.CD);
+		Media media12 = new Media("Harry Potter tome 2", "Merlin", LocalDate.of(2003, 01, 02), TypeMedia.LIVRE);
+		Media media13 = new Media("Zootopia", "Pixar", LocalDate.of(2013, 01, 02), TypeMedia.DVD);
+		Media media14 = new Media("Best of", "Metallica", LocalDate.of(2000, 01, 02), TypeMedia.CD);
 		
 		Laurent.addMedia(media2);
 		Laurent.addMedia(media1);
