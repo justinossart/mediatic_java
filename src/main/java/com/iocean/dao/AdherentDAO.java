@@ -100,7 +100,19 @@ public class AdherentDAO {
 	/**
 	 * 
 	 */
-	
+/*	public List<Object> getListeFiltre(String[] filter,String[] titre)
+	{
+		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
+		EntityManager em = emf.createEntityManager();
+		String requete = "select a from adherent a" ;
+		for( clef -> value : filter){
+			if(value!=null){requete+= " AND " + key + " = " + value  }
+		}
+		
+		for( clef -> value : tris){
+			if(value!=null){requete+= ", " + key + " = " + value  }
+		}		
+	}*/
 	
 	
 	
