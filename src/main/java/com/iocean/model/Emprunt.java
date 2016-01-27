@@ -77,7 +77,7 @@ public class Emprunt {
 
 	@Override
 	public String toString() {
-		return "Emprunt [adherent=" + adherent + ", media=" + media + ", date_emprunt=" + date_emprunt
+		return "Emprunt [adherent=" + adherent.getNom() + ", media=" + media.getTitre() + ", date_emprunt=" + date_emprunt
 				+ ", date_retour=" + date_retour + "]";
 	}
 

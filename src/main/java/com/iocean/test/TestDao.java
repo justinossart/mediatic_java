@@ -162,11 +162,11 @@ public class TestDao {
 			System.out.println(adh5.getNom() + " n'est pas à jour.");
 		}
 		
-		Emprunt getEmp1 = empruntDao.getEmprunt(292L);
-		Emprunt getEmp2 = empruntDao.getEmprunt(293L);
-		System.out.println("L'emprunt 292 et l'emprunt 293 sont : ");		
-		System.out.println(getEmp1.toString());
-		System.out.println(getEmp2.toString());		
+		Emprunt getEmp1 = empruntDao.getEmprunt(715L);
+		Emprunt getEmp2 = empruntDao.getEmprunt(716L);
+		System.out.println("L'emprunt 715 et l'emprunt 716 sont : ");		
+		System.out.println(getEmp1);
+		System.out.println(getEmp2);		
 	}
 
 }
