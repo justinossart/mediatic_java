@@ -63,6 +63,16 @@ public class TestDao {
 		adhdao.saveAdherent(adh5);
 		adhdao.saveAdherent(adh6);
 		
+		/* L'adhérent d'id 2  & 4 */
+		
+		Adherent getadh2 = adhdao.getAdherent(7L);
+		Adherent getadh4 = adhdao.getAdherent(10L);
+		System.out.println("Les adhérent 7 & 10 sont : ");
+		System.out.println(getadh2);
+		System.out.println(getadh4);
+		
+		
+		
 	}
 
 }
