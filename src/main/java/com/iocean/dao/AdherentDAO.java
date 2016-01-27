@@ -60,7 +60,7 @@ public class AdherentDAO {
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
 		TypedQuery<Adherent> queryGetAll = em.createQuery(
-				"select u from utilisateur u", Adherent.class);
+				"select a from Adherent a", Adherent.class);
 		List<Adherent> allAdherent = queryGetAll.getResultList();
 		em.close();
 		return allAdherent;
@@ -90,8 +90,8 @@ public class AdherentDAO {
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
 		TypedQuery<Adherent> query = em.createQuery(
-				"select a from adherent a where name like %:filter%", Adherent.class);
-		query.setParameter("filter", filter);
+				"select a from Adherent a where nom like :filter", Adherent.class);
+		query.setParameter("filter", "%" + filter + "%");
 		List<Adherent> adherents = query.getResultList();
 		
 		return adherents;

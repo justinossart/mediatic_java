@@ -62,7 +62,7 @@ public class MediaDAO {
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
 		TypedQuery<Media> queryGetAll = em.createQuery(
-				"select m from media m", Media.class);
+				"select m from Media m", Media.class);
 		List<Media> listMedia = queryGetAll.getResultList();
 		em.close();
 		return listMedia;
@@ -82,5 +82,23 @@ public class MediaDAO {
 		em.close();
 	}
 	
+
+	
+	
+	
+	/**
+	 * recuper la liste des medias par filtre
+	 */
+	public List<Media> getAdherentByName(String filter){
+		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
+		EntityManager em = emf.createEntityManager();
+		TypedQuery<Media> query = em.createQuery(
+				"select m from Media m where titre like :filter", Media.class);
+		query.setParameter("filter", "%" + filter + "%");
+		List<Media> mediaList = query.getResultList();
+
+		return mediaList;
+	}
+		
 		
 }

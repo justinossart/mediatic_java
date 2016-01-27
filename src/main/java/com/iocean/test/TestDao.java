@@ -77,6 +77,8 @@ public class TestDao {
 		Emprunt emprunt2 = new Emprunt(adh1,media2,LocalDate.of(2010, 11, 14),LocalDate.of(2012, 11, 14));
 		Emprunt emprunt3 = new Emprunt(adh2,media3,LocalDate.of(2015, 11, 14));
 		
+
+
 		/****************************************************************
 		 * 				Création des DAOs 
 		 ****************************************************************/
@@ -142,6 +144,9 @@ public class TestDao {
 		empruntDao.saveEmprunt(emprunt);
 		empruntDao.saveEmprunt(emprunt2);		
 		empruntDao.saveEmprunt(emprunt3);
+		
+		adh1 = adhdao.getAdherent(adh1.getId());
+		adh2 = adhdao.getAdherent(adh2.getId());
 				
 		/* L'adhérent d'id 2  & 4 */
 		
@@ -154,7 +159,7 @@ public class TestDao {
 		/* Cotisation à jour */
 		
 		Cotisation cot1 = new Cotisation(125f, LocalDate.of(2016, 03, 18), TypeCotisation.FAMILLE);
-		Cotisation cot2 = new Cotisation(125f, LocalDate.of(2015, 12, 25), TypeCotisation.FAMILLE);
+		Cotisation cot2 = new Cotisation(125f, LocalDate.of(1996, 12, 25), TypeCotisation.FAMILLE);
 		
 		CotisationDAO cotdao = new CotisationDAO();
 		
@@ -162,7 +167,7 @@ public class TestDao {
 		cotdao.saveCotisation(cot2);
 		
 		adh2.setCotisation(cot1);
-		adh5.setCotisation(cot1);
+		adh5.setCotisation(cot2);
 		
 		if(Cotisation.isUpToDateCotisation(adh2)){
 			System.out.println(adh2.getNom() + " est à jour.");
@@ -178,11 +183,27 @@ public class TestDao {
 			System.out.println(adh5.getNom() + " n'est pas à jour.");
 		}
 		
-		Emprunt getEmp1 = empruntDao.getEmprunt(292L);
-		Emprunt getEmp2 = empruntDao.getEmprunt(293L);
-		System.out.println("L'emprunt 292 et l'emprunt 293 sont : ");		
-		System.out.println(getEmp1.toString());
-		System.out.println(getEmp2.toString());		
+		/* Nombre d'emprunts d'un adherent */
+		
+		System.out.println(adh1.getNom() + " possède " + adh1.nbMedias() + " medias.");
+		System.out.println(adh2.getNom() + " possède " + adh2.nbMedias() + " medias.");
+		System.out.println(adh3.getNom() + " possède " + adh3.nbMedias() + " medias.");
+		System.out.println(adh4.getNom() + " possède " + adh4.nbMedias() + " medias.");
+		System.out.println(adh5.getNom() + " possède " + adh5.nbMedias() + " medias.");
+		System.out.println(adh6.getNom() + " possède " + adh6.nbMedias() + " medias.");
+		
+		/* --------------------------------------- */
+		
+		Emprunt getEmp1 = empruntDao.getEmprunt(715L);
+		Emprunt getEmp2 = empruntDao.getEmprunt(716L);
+		System.out.println("L'emprunt 715 et l'emprunt 716 sont : ");		
+		System.out.println(getEmp1);
+		System.out.println(getEmp2);	
+		
+		/* Recherche d'un adhérent */
+		
+		
+		System.out.println(adhdao.getAdherentByName("rou"));
 	}
 
 }

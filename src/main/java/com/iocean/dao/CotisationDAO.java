@@ -67,9 +67,9 @@ public class CotisationDAO {
 		EntityManager em = emf.createEntityManager();
 		Long adhid = adh.getId();
 		TypedQuery<Cotisation> queryGetAll = em.createQuery(
-				"select c from cotisation c"
-				+ "join adherent.cotisation "
-				+ "where adherent.id = :adhid", Cotisation.class);
+				"select c from Cotisation c"
+				+ "join Adherent.cotisation "
+				+ "where Adherent.id = :adhid", Cotisation.class);
 		queryGetAll.setParameter("adhid", adhid);
 		List<Cotisation> allCotis = queryGetAll.getResultList();
 		em.close();
