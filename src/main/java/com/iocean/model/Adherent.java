@@ -70,6 +70,19 @@ public class Adherent extends Personne {
 	public void setListeEmprunt(List<Emprunt> listeEmprunt) {
 		this.listeEmprunt = listeEmprunt;
 	}
+	
+	public void addEmprunt(Emprunt emprunt){
+		this.listeEmprunt.add(emprunt);
+	}
+	
+	public int nbMedias(){
+		if(this.getListeEmprunt() == null){
+			return 0;
+		}
+		else{
+			return this.getListeEmprunt().size();
+		}
+	}
 
 	@Override
 	public String toString() {

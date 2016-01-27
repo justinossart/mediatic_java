@@ -162,6 +162,15 @@ public class TestDao {
 			System.out.println(adh5.getNom() + " n'est pas à jour.");
 		}
 		
+		/* Nombre d'emprunts d'un adherent */
+		
+		System.out.println(adh1.getNom() + " possède " + adh1.nbMedias() + " medias.");
+		System.out.println(adh2.getNom() + " possède " + adh2.nbMedias() + " medias.");
+		System.out.println(adh3.getNom() + " possède " + adh3.nbMedias() + " medias.");
+		System.out.println(adh4.getNom() + " possède " + adh4.nbMedias() + " medias.");
+		System.out.println(adh5.getNom() + " possède " + adh5.nbMedias() + " medias.");
+		System.out.println(adh6.getNom() + " possède " + adh6.nbMedias() + " medias.");
+		
 		Emprunt getEmp1 = empruntDao.getEmprunt(715L);
 		Emprunt getEmp2 = empruntDao.getEmprunt(716L);
 		System.out.println("L'emprunt 715 et l'emprunt 716 sont : ");		

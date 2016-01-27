@@ -96,6 +96,10 @@ public class Media {
 	public void setTypeMedia(TypeMedia typeMedia) {
 		this.typeMedia = typeMedia;
 	}
+	
+	public void addEmprunt(Emprunt e){
+		this.listEmprunts.add(e);
+	}
 
 	@Override
 	public String toString() {
