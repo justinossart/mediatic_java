@@ -1,11 +1,14 @@
 package com.iocean.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,14 +20,17 @@ public class Media {
 
 	// Attributs 
 	
+	@Id
+	@GeneratedValue
+	private Long id;
+	
 	@Column
 	private String titre;
 	@Column
 	private String auteur;
 	
-	@Column(name="id_emprunteur")
-	@OneToMany(mappedBy="listeMedias")
-	private Adherent emprunteur;
+	@OneToMany(mappedBy="media")
+	private List<Emprunt> listEmprunts;
 	
 	@Column
 	private LocalDate dateEmprunt;
@@ -44,60 +50,55 @@ public class Media {
 		this.dateEmprunt = dateEmprunt;
 		this.typeMedia = typeMedia;
 	}
+
 	
-	// Getters
+	public Long getId() {
+		return id;
+	}
 
 	public String getTitre() {
 		return titre;
+	}
+
+	public void setTitre(String titre) {
+		this.titre = titre;
 	}
 
 	public String getAuteur() {
 		return auteur;
 	}
 
-	public LocalDate getDateEmprunt() {
-		return dateEmprunt;
-	}
-
-	public TypeMedia getTypeMedia() {
-		return typeMedia;
-	}
-	
-	public Adherent getEmprunteur() {
-		return emprunteur;
-	}	
-	
-	// Setters
-	
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
-
 	public void setAuteur(String auteur) {
 		this.auteur = auteur;
+	}
+
+	public List<Emprunt> getListEmprunts() {
+		return listEmprunts;
+	}
+
+	public void setListEmprunts(List<Emprunt> listEmprunts) {
+		this.listEmprunts = listEmprunts;
+	}
+
+	public LocalDate getDateEmprunt() {
+		return dateEmprunt;
 	}
 
 	public void setDateEmprunt(LocalDate dateEmprunt) {
 		this.dateEmprunt = dateEmprunt;
 	}
 
+	public TypeMedia getTypeMedia() {
+		return typeMedia;
+	}
+
 	public void setTypeMedia(TypeMedia typeMedia) {
 		this.typeMedia = typeMedia;
-	}
-	public void setEmprunteur(Adherent emprunteur) throws Exception {
-		if(this.emprunteur==null){
-			this.emprunteur=emprunteur;
-			if(emprunteur!=null){
-				emprunteur.addMedia(this);
-			}
-		}else{
-			throw new Exception("Ouvrage déjà emprunté.");
-		}
 	}
 
 	@Override
 	public String toString() {
-		return "Medias [titre=" + titre + ", auteur=" + auteur + ", emprunteur=" + emprunteur + ", dateEmprunt="
+		return "Media [titre=" + titre + ", auteur=" + auteur + ", listEmprunts=" + listEmprunts + ", dateEmprunt="
 				+ dateEmprunt + ", typeMedia=" + typeMedia + "]";
 	}
 	

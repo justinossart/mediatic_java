@@ -2,8 +2,11 @@ package com.iocean.utilitaires;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Locale;
 import com.iocean.model.Adherent;
+import com.iocean.model.Emprunt;
+import com.iocean.model.Media;
 
 public class Utilitaires {
 
@@ -22,13 +25,17 @@ public class Utilitaires {
 	}
 
 	public static void sortMediasDate(Adherent ad) {
-		MediasComparatorDate comparator = new MediasComparatorDate();
-		ad.getMedias().sort(comparator);
+		EmpruntComparatorDate comparator = new EmpruntComparatorDate();
+		ad.getListeEmprunt().sort(comparator);
 	}
 
 	public static void sortMediasTitle(Adherent ad) {
 		MediasComparatorTitre comparator = new MediasComparatorTitre();
-		ad.getMedias().sort(comparator);
+		ArrayList<Media> listMedia = new ArrayList<Media>();
+		for(Emprunt emp : ad.getListeEmprunt()){
+			listMedia.add(emp.getMedia());
+		}
+		listMedia.sort(comparator);
 	}
 
 }
