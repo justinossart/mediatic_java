@@ -1,4 +1,4 @@
-package com.iocean.utiltaires;
+package com.iocean.utilitaires;
 
 import java.util.Comparator;
 import com.iocean.model.Medias;

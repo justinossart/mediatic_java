@@ -10,7 +10,7 @@ import com.iocean.model.Mediatheque;
 import com.iocean.model.Utilisateur;
 import com.iocean.typeEnum.TypeCotisation;
 import com.iocean.typeEnum.TypeMedia;
-import com.iocean.utiltaires.Utilitaires;
+import com.iocean.utilitaires.Utilitaires;
 
 public class TestMain {
 

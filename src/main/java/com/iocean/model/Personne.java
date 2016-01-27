@@ -5,7 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import com.iocean.utiltaires.Utilitaires;
+
+import com.iocean.utilitaires.Utilitaires;
 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Personne {

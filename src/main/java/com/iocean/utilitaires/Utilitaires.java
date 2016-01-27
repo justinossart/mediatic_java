@@ -1,4 +1,4 @@
-package com.iocean.utiltaires;
+package com.iocean.utilitaires;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

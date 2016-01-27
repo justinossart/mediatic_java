@@ -9,9 +9,9 @@
 				value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.1.49:5432/mediaticTest" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/mediaticTest" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="postgre" />
+			<property name="javax.persistence.jdbc.password" value="admin" />
 			<property name="hibernate.hikari.minimumIdle" value="5" />
 			<property name="hibernate.hikari.maximumPoolSize" value="10" />
 			<property name="hibernate.hikari.idleTimeout" value="30000" />
