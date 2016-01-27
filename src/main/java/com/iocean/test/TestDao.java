@@ -131,7 +131,7 @@ public class TestDao {
 		/* Cotisation à jour */
 		
 		Cotisation cot1 = new Cotisation(125f, LocalDate.of(2016, 03, 18), TypeCotisation.FAMILLE);
-		Cotisation cot2 = new Cotisation(125f, LocalDate.of(2015, 12, 25), TypeCotisation.FAMILLE);
+		Cotisation cot2 = new Cotisation(125f, LocalDate.of(1996, 12, 25), TypeCotisation.FAMILLE);
 		
 		CotisationDAO cotdao = new CotisationDAO();
 		
@@ -139,7 +139,7 @@ public class TestDao {
 		cotdao.saveCotisation(cot2);
 		
 		adh2.setCotisation(cot1);
-		adh5.setCotisation(cot1);
+		adh5.setCotisation(cot2);
 		
 		if(Cotisation.isUpToDateCotisation(adh2)){
 			System.out.println(adh2.getNom() + " est à jour.");
