@@ -6,6 +6,7 @@ import com.iocean.dao.EmpruntDAO;
 import com.iocean.dao.MediaDAO;
 import com.iocean.dao.UtilisateurDAO;
 import com.iocean.model.Adherent;
+import com.iocean.model.Emprunt;
 import com.iocean.model.Media;
 import com.iocean.model.Utilisateur;
 import com.iocean.typeEnum.TypeMedia;
@@ -72,7 +73,13 @@ public class TestDao {
 		Media media10 = new Media("AVATAR", "cameron", LocalDate.of(2009, 05, 02), TypeMedia.CD);
 		Media media11 = new Media("eminem show", "eminem", LocalDate.of(2004, 10, 14), TypeMedia.CD);
 		
+		/****************************************************************
+		 *  				creation des emprunts
+		 ****************************************************************/		
 		
+		Emprunt emprunt = new Emprunt(adh1,media,LocalDate.of(2010, 10, 14));
+		Emprunt emprunt2 = new Emprunt(adh1,media2,LocalDate.of(2010, 11, 14),LocalDate.of(2012, 11, 14));
+		Emprunt emprunt3 = new Emprunt(adh2,media3,LocalDate.of(2015, 11, 14));
 		
 		/****************************************************************
 		 * 				Création des DAOs 
@@ -118,10 +125,12 @@ public class TestDao {
 		mediaDao.saveMedia(media10);
 		mediaDao.saveMedia(media11);
 		
-		// enregistrement des emprunts
-		//empruntDao.
-		
-		
+
+		// enregistrement des Emprunts.
+		empruntDao.saveEmprunt(emprunt);
+		empruntDao.saveEmprunt(emprunt2);		
+		empruntDao.saveEmprunt(emprunt3);
+				
 		/* L'adhérent d'id 2  & 4 */
 		
 		Adherent getadh2 = adhdao.getAdherent(7L);
@@ -131,7 +140,13 @@ public class TestDao {
 		System.out.println(getadh4);
 		
 		
+		// enregistrement des emprunts
 		
+		Emprunt getEmp1 = empruntDao.getEmprunt(292L);
+		Emprunt getEmp2 = empruntDao.getEmprunt(293L);
+		System.out.println("L'emprunt 292 et l'emprunt 293 sont : ");		
+		System.out.println(getEmp1.toString());
+		System.out.println(getEmp2.toString());		
 	}
 
 }
