@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.iocean.exception.LoginException;
-import com.iocean.utiltaires.Utilitaires;
+import com.iocean.utilitaires.Utilitaires;
 
 @Entity
 @Table(name="utilisateur")

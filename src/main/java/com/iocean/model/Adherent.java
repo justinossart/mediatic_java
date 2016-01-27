@@ -1,13 +1,13 @@
 package com.iocean.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,68 +23,60 @@ public class Adherent extends Personne {
 	@ManyToOne
 	private Cotisation cotisation;
 	
-	@ManyToMany
-	private ArrayList<Media> listeMedias;
+	@OneToMany(mappedBy = "adherent")
+	private List<Emprunt> listeEmprunt;
 
 	// Constructeurs
 
 	public Adherent() {
 	}
 	
-	public Adherent(String nom, String prenom, String mail, LocalDate date, Adresse adresse, Cotisation cotisation,
-			ArrayList<Media> listMedias) {
+	public Adherent(String nom, String prenom, String mail, LocalDate date, Adresse adresse, Cotisation cotisation) {
 		super(nom, prenom, mail);
 		this.dateNaissance = date;
 		this.adresse = adresse;
 		this.cotisation = cotisation;
-		this.listeMedias = listMedias;
-	}
-
-	public Adherent(String nom, String prenom, String mail, LocalDate date, Adresse adresse, Cotisation cotisation) {
-		this(nom, prenom, mail, date, adresse, cotisation, new ArrayList<Media>());
-	}
-
-	// Getteurs
-	public ArrayList<Media> getMedias() {
-		return this.listeMedias;
 	}
 
 	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public Adresse getAdresse() {
-		return adresse;
-	}
-
-	public int getAge() {
-		/* todo : regarder si date ne le fait pas déjà */
-		return 0;
-	}
-
-	// Setteurs
 	public void setDateNaissance(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
 	}
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
 
-	// Methode
-
-	public void addMedia(Media media) {
-		this.listeMedias.add(media);
+	public Cotisation getCotisation() {
+		return cotisation;
 	}
 
-	public void removeMedia(Media media) {
-		this.listeMedias.remove(media);
+	public void setCotisation(Cotisation cotisation) {
+		this.cotisation = cotisation;
+	}
+
+	public List<Emprunt> getListeEmprunt() {
+		return listeEmprunt;
+	}
+
+	public void setListeEmprunt(List<Emprunt> listeEmprunt) {
+		this.listeEmprunt = listeEmprunt;
 	}
 
 	@Override
 	public String toString() {
 		return "Adherent [dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", cotisation=" + cotisation
-				+ ", listeMedias=" + listeMedias + "]";
+				+ ", listeEmprunt=" + listeEmprunt + "]";
 	}
+
+
+
 
 }
