@@ -25,7 +25,13 @@ public class Emprunt {
 	private LocalDate date_retour;
 	
 	public Emprunt(){}
-
+	
+	public Emprunt(Adherent adherent, Media media, LocalDate date_emprunt) {
+		this.adherent = adherent;
+		this.media = media;
+		this.date_emprunt = date_emprunt;
+		this.date_retour = null;
+	}
 	public Emprunt(Adherent adherent, Media media, LocalDate date_emprunt, LocalDate date_retour) {
 		this.adherent = adherent;
 		this.media = media;
@@ -71,7 +77,7 @@ public class Emprunt {
 
 	@Override
 	public String toString() {
-		return "Emprunt [adherent=" + adherent + ", media=" + media + ", date_emprunt=" + date_emprunt
+		return "Emprunt [adherent=" + adherent.getNom() + ", media=" + media.getTitre() + ", date_emprunt=" + date_emprunt
 				+ ", date_retour=" + date_retour + "]";
 	}
 

@@ -2,11 +2,10 @@ package com.iocean.test;
 
 import java.time.LocalDate;
 
+
 import com.iocean.dao.*;
 import com.iocean.model.*;
 import com.iocean.typeEnum.*;
-
-
 
 public class TestDao {
 
@@ -70,7 +69,13 @@ public class TestDao {
 		Media media10 = new Media("AVATAR", "cameron", LocalDate.of(2009, 05, 02), TypeMedia.CD);
 		Media media11 = new Media("eminem show", "eminem", LocalDate.of(2004, 10, 14), TypeMedia.CD);
 		
+		/****************************************************************
+		 *  				creation des emprunts
+		 ****************************************************************/		
 		
+		Emprunt emprunt = new Emprunt(adh1,media,LocalDate.of(2010, 10, 14));
+		Emprunt emprunt2 = new Emprunt(adh1,media2,LocalDate.of(2010, 11, 14),LocalDate.of(2012, 11, 14));
+		Emprunt emprunt3 = new Emprunt(adh2,media3,LocalDate.of(2015, 11, 14));
 		
 		/****************************************************************
 		 * 				Création des DAOs 
@@ -116,10 +121,12 @@ public class TestDao {
 		mediaDao.saveMedia(media10);
 		mediaDao.saveMedia(media11);
 		
-		// enregistrement des emprunts
-		//empruntDao.
-		
-		
+
+		// enregistrement des Emprunts.
+		empruntDao.saveEmprunt(emprunt);
+		empruntDao.saveEmprunt(emprunt2);		
+		empruntDao.saveEmprunt(emprunt3);
+				
 		/* L'adhérent d'id 2  & 4 */
 		
 		Adherent getadh2 = adhdao.getAdherent(7L);
@@ -155,6 +162,11 @@ public class TestDao {
 			System.out.println(adh5.getNom() + " n'est pas à jour.");
 		}
 		
+		Emprunt getEmp1 = empruntDao.getEmprunt(715L);
+		Emprunt getEmp2 = empruntDao.getEmprunt(716L);
+		System.out.println("L'emprunt 715 et l'emprunt 716 sont : ");		
+		System.out.println(getEmp1);
+		System.out.println(getEmp2);		
 	}
 
 }
