@@ -80,6 +80,10 @@ public class Cotisation {
 
 	// Méthodes
 	
+	public static boolean isUpToDateCotisation(Adherent adh){
+		return adh.getCotisation().getDateCotisation().plusYears(1L).isAfter(LocalDate.now());
+	}
+	
 	@Override
 	public String toString() {
 		return "Cotisation [montant=" + montant + ", dateCotisation=" + dateCotisation + ", typeCotisation="
