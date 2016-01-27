@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -23,7 +24,7 @@ public class Adherent extends Personne {
 	@ManyToOne
 	private Cotisation cotisation;
 	
-	@OneToMany(mappedBy = "adherent")
+	@OneToMany(mappedBy = "adherent", fetch = FetchType.EAGER)
 	private List<Emprunt> listeEmprunt;
 
 	// Constructeurs
@@ -72,7 +73,7 @@ public class Adherent extends Personne {
 
 	@Override
 	public String toString() {
-		return "Adherent [dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", cotisation=" + cotisation
+		return super.toString() + "Adherent [dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", cotisation=" + cotisation
 				+ ", listeEmprunt=" + listeEmprunt + "]";
 	}
 

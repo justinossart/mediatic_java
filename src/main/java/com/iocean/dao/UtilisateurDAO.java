@@ -6,11 +6,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
+import com.iocean.model.Adherent;
 import com.iocean.model.Utilisateur;
 import com.iocean.utilitaires.PersistenceManagerFactorySingleton;
 
 public class UtilisateurDAO {
 	
+	/**
+	 * methode de creation d'un utilisateur
+	 * @param utilisateur
+	 * @return
+	 */
 	public Utilisateur saveUtilisateur(Utilisateur utilisateur){
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
@@ -21,6 +27,27 @@ public class UtilisateurDAO {
 		return utilisateur;
 	}
 	
+	/**
+	 * update utilisateur
+	 * @param utilisateur
+	 * @return
+	 */
+	public Utilisateur updateUtilisateur(Utilisateur utilisateur){
+		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(utilisateur);
+		em.getTransaction().commit();
+		em.close();
+		return utilisateur;
+	}
+	
+	
+	/**
+	 * recupere un utilsateur par son id
+	 * @param id
+	 * @return
+	 */
 	public Utilisateur getUtilisateur(Long id){
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
@@ -29,6 +56,11 @@ public class UtilisateurDAO {
 		return utilisateur;
 	}
 	
+	
+	/**
+	 * recupere tous les utilsateurs
+	 * @return
+	 */
 	public List<Utilisateur> getAllUtilisateur(){
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
@@ -39,14 +71,21 @@ public class UtilisateurDAO {
 		return allUtilisateurs;
 	}
 	
-	public Utilisateur updateUtilisateur(Utilisateur utilisateur){
+	
+	
+	/**
+	 * supprimer un utilsateur
+	 */
+	public void removeUtilisateur(Long id){
+		
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		em.merge(utilisateur);
-		em.getTransaction().commit();
+		Utilisateur usr = em.find(Utilisateur.class, id);
+		em.remove(usr);
 		em.close();
-		return utilisateur;
 	}
+	
+	
+	
 
 }
