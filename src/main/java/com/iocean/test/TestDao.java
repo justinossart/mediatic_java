@@ -118,6 +118,15 @@ public class TestDao {
 		mediaDao.saveMedia(media10);
 		mediaDao.saveMedia(media11);
 		
+		
+		
+		
+		
+		// update
+		media11.setAuteur("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+		mediaDao.updateAdherent(media11);
+
+		
 		// enregistrement des emprunts
 		//empruntDao.
 		
