@@ -14,7 +14,7 @@ public class MediaDAO {
 	 * @param adh
 	 * @return
 	 */
-	public Media createMedia(Media media){
+	public Media saveMedia(Media media){
 		EntityManagerFactory emf = PersistenceManagerFactorySingleton.instance();
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
