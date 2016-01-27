@@ -72,7 +72,9 @@ public class Adherent extends Personne {
 	}
 	
 	public void addEmprunt(Emprunt emprunt){
-		this.listeEmprunt.add(emprunt);
+		if(emprunt != null){
+			this.listeEmprunt.add(emprunt);
+		}
 	}
 	
 	public int nbMedias(){

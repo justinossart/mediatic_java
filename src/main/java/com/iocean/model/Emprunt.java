@@ -31,16 +31,12 @@ public class Emprunt {
 		this.media = media;
 		this.date_emprunt = date_emprunt;
 		this.date_retour = null;
-		adherent.addEmprunt(this);
-		media.addEmprunt(this);
 	}
 	public Emprunt(Adherent adherent, Media media, LocalDate date_emprunt, LocalDate date_retour) {
 		this.adherent = adherent;
 		this.media = media;
 		this.date_emprunt = date_emprunt;
 		this.date_retour = date_retour;
-		adherent.addEmprunt(this);
-		media.addEmprunt(this);
 	}
 	
 	public Long getId() {
